@@ -13,7 +13,7 @@ def to_input(data):
 
 class Perceptron:
     def __init__(self, m, n, o):
-        # decide initial weight [-0.5,0.5)
+        # decide initial weight [-0.005,0.005)
         self.w_IM = np.random.rand(n,m+1) - 0.5
         self.w_IM = self.w_IM / 100
         self.w_MO = np.random.rand(o,n+1) - 0.5
@@ -69,7 +69,7 @@ def main():
         print("Try ", cnt, ": ", acc)
         cnt += 1
         for i in range(len(datas)):
-            out = P.learn(datas[i], train_y[i])
+            P.learn(datas[i], train_y[i])
         if cnt >= 200:
             break
     plt.plot(x,acc_train,label="train")
